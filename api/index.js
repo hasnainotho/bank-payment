@@ -9,7 +9,22 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  'https://hasnainotho.github.io',
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 // ...existing code from server.js (copy everything except app.listen)... 
@@ -43,6 +58,10 @@ async function get_bank_credentials(org_id, auth_token) {
     };
   }
 }
+
+app.get('/health', async (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 app.post('/create-session', async (req, res) => {
   try {
