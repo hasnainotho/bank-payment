@@ -3,7 +3,6 @@
 // Serve your static HTML/JS/CSS from GitHub Pages (see frontend/ directory).
 
 const express = require('express');
-const serverless = require('serverless-http');
 const axios = require('axios');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -703,4 +702,3 @@ app.get('/success', async (req, res) => {
 // Remove app.listen(3000, ...) as Vercel handles the server
 
 module.exports = app;
-module.exports.handler = serverless(app);
