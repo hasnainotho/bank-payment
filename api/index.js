@@ -704,9 +704,11 @@ app.get('/success', async (req, res) => {
 // module.exports = app;
 
 // Add this handler for Vercel:
-const server = require('http').createServer(app);
+// const server = require('http').createServer(app);
 
-module.exports = (req, res) => {
-  // Let Express handle the request
-  server.emit('request', req, res);
-};
+// module.exports = (req, res) => {
+//   // Let Express handle the request
+//   server.emit('request', req, res);
+// };
+
+module.exports = app;
