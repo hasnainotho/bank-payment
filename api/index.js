@@ -699,6 +699,14 @@ app.get('/success', async (req, res) => {
     `);
   }
 });
-// Remove app.listen(3000, ...) as Vercel handles the server
 
-module.exports = app;
+// Remove this line:
+// module.exports = app;
+
+// Add this handler for Vercel:
+const server = require('http').createServer(app);
+
+module.exports = (req, res) => {
+  // Let Express handle the request
+  server.emit('request', req, res);
+};
