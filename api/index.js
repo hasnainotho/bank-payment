@@ -92,10 +92,10 @@ app.post('/create-session', async (req, res) => {
         operation: "PURCHASE",
         merchant: {
           name: "TESTATMOSPHERGYM",
-          url: "https://bank-gateway-five.vercel.app/"
+          url: "https://bank-2kxtlcd1f-ghulam-hasnains-projects.vercel.app/"
           // url: "http://localhost:3000/success" // for testing purposes
         },
-        returnUrl: `https://bank-gateway-five.vercel.app/success?orderId=${orderId}&org_id=${org_id}&auth_token=${decoded.auth_token}`
+        returnUrl: `https://bank-2kxtlcd1f-ghulam-hasnains-projects.vercel.app/api/success?orderId=${orderId}&org_id=${org_id}&auth_token=${decoded.auth_token}`
         // returnUrl: `http://localhost:3000/success?orderId=${orderId}&org_id=${org_id}&auth_token=${decoded.auth_token}` // must be a real URL
       },
       order: {
