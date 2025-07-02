@@ -7,6 +7,7 @@ const axios = require('axios');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const app = express();
+const serverless = require('serverless-http');
 
 const allowedOrigins = [
   'https://hasnainotho.github.io',
@@ -711,4 +712,5 @@ app.get('/success', async (req, res) => {
 //   server.emit('request', req, res);
 // };
 
-module.exports = app;
+// module.exports = app;
+module.exports = serverless(app);
